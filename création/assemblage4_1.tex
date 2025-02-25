@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[margin=1cm,landscape]{geometry} 
+
+\definecolor{Acolor}{rgb}{1,0.8,0.8} % rouge
+\definecolor{Tcolor}{rgb}{0.8,1,0.8}  % vert
+\definecolor{Ccolor}{rgb}{0.8,0.8,1} % bleu
+\definecolor{Gcolor}{rgb}{1,1,0.8}    % jaune
+
+\newcommand{\dnafont}{\fontsize{100pt}{70pt}\selectfont}
+
+\newcommand{\highlightDNA}[1]{%
+    \foreach \base in {#1} {%
+        \ifnum\pdfstrcmp{\base}{A}=0 \colorbox{Acolor}{A}%
+        \else\ifnum\pdfstrcmp{\base}{T}=0 \colorbox{Tcolor}{T}%
+        \else\ifnum\pdfstrcmp{\base}{C}=0 \colorbox{Ccolor}{C}%
+        \else\ifnum\pdfstrcmp{\base}{G}=0 \colorbox{Gcolor}{G}%
+        \else \textcolor{red}{\base}%
+        \fi\fi\fi\fi
+    }%
+}
+
+\begin{document}
+
+\begin{center}
+    \dnafont
+    \textbf{NIVEAU4 ASSEMBLAGE:}
+
+    \noindent\highlightDNA{G,C,C,T,G,A,G,T,T,G,A,A,G,G,T,C,G,C,C,C,C,T,A,T,T}
+    \noindent\highlightDNA{T,C,A,T,C,C,C,A,A,T,A,A,T,T,T,G,C,T,C,T,T,C,A,G,C,A}
+    \noindent\highlightDNA{T,C,A,T,C,C,C,A,A,T,A,A,T,T,T,G,C,T,C,T,T,C,A,G,C,A,T}
+    \noindent\highlightDNA{T,A,T,C,G,T,G,A,T,G,T,A,C,T,T,T,C,T,G,C,C,C,C,T,C,A,A}
+    \noindent\highlightDNA{T,A,T,C,G,T,G,A,T,G,T,A,C,T,T,T,C,T,G,C,C,C,C,T,C,A,A,C}
+    \noindent\highlightDNA{T,A,G,G,G,G,C,C,C,T,A,T,G,G,A,G,C,T,A,G,A,C,G,G,G,G,G,T,C}
+    \noindent\highlightDNA{T,A,G,G,G,G,C,C,C,T,A,T,G,G,A,G,C,T,A,G,A,C,G,G,G,G,G,T,C}
+    \noindent\highlightDNA{G,G,G,A,G,T,T,C,A,C,T,T,T,C,C,C,A,A,A,A,T,T,C,G,G,G,C,T,T}
+    \noindent\highlightDNA{G,G,G,A,G,T,T,C,A,C,T,T,T,C,C,C,A,A,A,A,T,T,C,G,G,G,C,T}
+    \noindent\highlightDNA{T,G,A,A,G,A,T,G,C,C,G,C,A,C,G,C,A,G,C,T,A,G,G,C,C,T,A,G,C}
+    \noindent\highlightDNA{T,G,A,A,G,A,T,G,C,C,G,C,A,C,G,C,A,G,C,T,A,G,G}
+    \noindent\highlightDNA{C,C,T,A,G,C,G,T,T,C,A,C,T,C,A,G,G,G,A,A,C,C,C}
+    \noindent\highlightDNA{C,C,T,A,G,C,G,T,T,C,A,C,T,C,A,G,G,G,A,A,C,C,C,G}
+    \noindent\highlightDNA{G,A,G,T,T,G,A,C,A,C,T,G,T,G,G,G,C,A,G,C,C,A,A,T,A}
+    \noindent\highlightDNA{G,A,G,T,T,G,A,C,A,C,T,G,T,G,G,G,C,A,G,C}
+    \noindent\highlightDNA{C,A,A,T,A,A,T,C,G,G,G,C,A,C,G,T,T,T,C,C,C}
+    \noindent\highlightDNA{C,A,A,T,A,A,T,C,G,G,G,C,A,C,G,T,T,T,C,C,C,G,G,C,G,T,G,C,A}
+    \noindent\highlightDNA{A,T,C,G,C,C,C,C,A,C,T,C,G,A,T,A,T,C,G,A,A,A,T,G,A,C,A,G,C}
+    \noindent\highlightDNA{A,T,C,G,C,C,C,C,A,C,T,C,G,A,T,A,T,C,G,A,A,A,T,G,A,C,A,G,C}
+    \noindent\highlightDNA{C,C,C,G,C,C,T,T,G,C,T,C,T,G,C,T,C,A,A,T,G,G,C,G,A,A,G,A,G}
+    \noindent\highlightDNA{G,G,T,C,G,C,C,C,C,T,A,T,T,T,C,A,T,C,C,C,A,A,T,A,A,T,T,T,G}
+    \noindent\highlightDNA{C,T,C,T,T,C,A,G,C,A,T,T,A,T,C,G,T,G,A,T,G,T,A,C,T,T,T,C,T,G}
+    \noindent\highlightDNA{A,A,T,C,G,G,G,C,A,C,G,T,T,T,C,C,C,G,G,C,G,T,G,C}
+    \noindent\highlightDNA{A,A,T,C,G,C,C,C,C,A,C,T,C,G,A,T,A,T,C,G,A,A,A,T,G}
+    \noindent\highlightDNA{C,G,T,G,C,A,A,T,C,G,C,C,C,C,A,C,T,C,G,A,T,A,T,C,G,A,A,A,T,G}
+    \noindent\highlightDNA{A,C,A,G,C,C,C,C,G,C,C,T,T,G,C,T,C,T,G,C,T,C,A,A,T,G,G,C,G,A}
+    \noindent\highlightDNA{G,G,T,C,G,G,G,A,G,T,T,C,A,C,T,T,T,C,C,C,A,A,A,A,T,T,C,G,G,G}
+    \noindent\highlightDNA{C,T,T,G,A,A,G,A,T,G,C,C,G,C,A,C,G,C,A,G,C,T,A,G,G,C,C,T,A,G}
+    \noindent\highlightDNA{C,T,A,G,C,G,T,T,C,A,C,T,C,A,G,G,G,A,A,C,C}
+    \noindent\highlightDNA{C,G,G,A,G,T,T,G,A,C,A,C,T,G,T,G,G,G,C,A,G,C}
+    \noindent\highlightDNA{C,A,G,C,C,A,A,T,A,A,T,C,G,G,G,C,A,C,G,T,T,T,C,C,C,G,G}
+    \noindent\highlightDNA{C,G,T,G,C,A,A,T,C,G,C,C,C,C,A,C,T,C,G,A,T,A,T,C,G,A,A}
+    \noindent\highlightDNA{C,C,T,G,A,G,T,T,G,A,A,G,G,T,C,G,C,C,C,C,T,A,T,T,T,C,A,T,C,C}
+    \noindent\highlightDNA{C,A,A,T,A,A,T,T,T,G,C,T,C,T,T,C,A,G,C,A,T,T,A,T,C,G,T,G,A,T}
+    \noindent\highlightDNA{A,T,A,T,C,G,A,A,A,T,G,A,C,A,G,C,C,C,C,G,C,C,T,T,G,C,T}
+    \noindent\highlightDNA{C,T,G,C,T,C,A,A,T,G,G,C,G,A,A,G,A,G,G,A,G,G,A,G,A,T,A}
+    \noindent\highlightDNA{G,G,G,G,T,C,G,G,G,A,G,T,T,C,A,C,T,T,T,C,C,C,A,A,A,A,T,T}
+    \noindent\highlightDNA{C,G,G,G,C,T,T,G,A,A,G,A,T,G,C,C,G,C,A,C,G,C,A,G,C,T,A,G}
+    \noindent\highlightDNA{T,A,T,T,T,C,A,T,C,C,C,A,A,T,A,A,T,T,T,G,C,T,C,T}
+    \noindent\highlightDNA{T,C,A,G,C,A,T,T,A,T,C,G,T,G,A,T,G,T,A,C,T,T,T,C}
+    \noindent\highlightDNA{C,A,C,T,C,G,A,T,A,T,C,G,A,A,A,T,G,A,C,A,G,C,C,C,C,G}
+    \noindent\highlightDNA{C,C,T,T,G,C,T,C,T,G,C,T,C,A,A,T,G,G,C,G,A,A,G,A,G,G,A}
+    \noindent\highlightDNA{T,C,G,G,G,C,A,C,G,T,T,T,C,C,C,G,G,C,G,T,G,C}
+    \noindent\highlightDNA{A,A,T,C,G,C,C,C,C,A,C,T,C,G,A,T,A,T,C,G,A,A}
+    \noindent\highlightDNA{C,T,A,G,G,C,C,T,A,G,C,G,T,T,C,A,C,T,C,A,G,G,G,A,A,C,C,C,G,G}
+    \noindent\highlightDNA{A,G,T,T,G,A,C,A,C,T,G,T,G,G,G,C,A,G,C,C,A,A,T,A,A,T,C,G,G,G}
+    \noindent\highlightDNA{C,G,C,A,C,G,C,A,G,C,T,A,G,G,C,C,T,A,G,C,G}
+    \noindent\highlightDNA{T,T,C,A,C,T,C,A,G,G,G,A,A,C,C,C,G,G,A,G,T,T}
+    \noindent\highlightDNA{T,G,A,C,A,C,T,G,T,G,G,G,C,A,G,C,C,A,A,T,A,A,T}
+    \noindent\highlightDNA{C,G,G,G,C,A,C,G,T,T,T,C,C,C,G,G,C,G,T,G,C,A,A,T}
+    \noindent\highlightDNA{T,C,T,T,C,A,G,C,A,T,T,A,T,C,G,T,G,A,T,G,T}
+    \noindent\highlightDNA{A,C,T,T,T,C,T,G,C,C,C,C,T,C,A,A,C,T,A,G,G}
+    \noindent\highlightDNA{T,G,A,T,G,T,A,C,T,T,T,C,T,G,C,C,C,C,T,C,A,A,C,T,A,G}
+    \noindent\highlightDNA{G,G,G,C,C,C,T,A,T,G,G,A,G,C,T,A,G,A,C,G,G,G,G,G,T,C}
+    \noindent\highlightDNA{C,T,A,T,T,T,C,A,T,C,C,C,A,A,T,A,A,T,T,T,G,C}
+    \noindent\highlightDNA{T,C,T,T,C,A,G,C,A,T,T,A,T,C,G,T,G,A,T,G,T,A,C}
+    \noindent\highlightDNA{C,G,T,T,T,C,C,C,G,G,C,G,T,G,C,A,A,T,C,G,C,C,C,C,A,C,T,C,G}
+    \noindent\highlightDNA{A,T,A,T,C,G,A,A,A,T,G,A,C,A,G,C,C,C,C,G,C,C,T,T,G,C,T,C,T,G}
+    \noindent\highlightDNA{T,T,G,A,A,G,G,T,C,G,C,C,C,C,T,A,T,T,T,C}
+    \noindent\highlightDNA{A,T,C,C,C,A,A,T,A,A,T,T,T,G,C,T,C,T,T,C}
+\end{center}
+\end{document}
