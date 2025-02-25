@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[margin=1cm,landscape]{geometry}
+
+\definecolor{Acolor}{rgb}{1,0.8,0.8} % rouge
+\definecolor{Tcolor}{rgb}{0.8,1,0.8}  % vert
+\definecolor{Ccolor}{rgb}{0.8,0.8,1} % bleu
+\definecolor{Gcolor}{rgb}{1,1,0.8}    % jaune
+
+\newcommand{\dnafont}{\fontsize{100pt}{100pt}\selectfont}
+
+\newcommand{\highlightDNA}[1]{%
+    \foreach \base in {#1} {%
+        \ifnum\pdfstrcmp{\base}{A}=0 \colorbox{Acolor}{A}%
+        \else\ifnum\pdfstrcmp{\base}{T}=0 \colorbox{Tcolor}{T}%
+        \else\ifnum\pdfstrcmp{\base}{C}=0 \colorbox{Ccolor}{C}%
+        \else\ifnum\pdfstrcmp{\base}{G}=0 \colorbox{Gcolor}{G}%
+        \else \textcolor{red}{\base}%
+        \fi\fi\fi\fi
+    }%
+}
+
+\begin{document}
+
+\begin{center}
+    \dnafont
+    \textbf{NIVEAU1 ASSEMBLAGE:}
+
+    \noindent\highlightDNA{A,G,C,T,A,A,G,A,A,T,T,T,C,A}
+    \noindent\highlightDNA{T,T,T,A,G,C,T,A,A,G,A,A,T}
+
+    \noindent\highlightDNA{A,G,A,A,T,T,T,C,A,T,A}
+
+    \textbf{séquence à trouver:}
+    \noindent\highlightDNA{T,T,T,A,G,C,T,A,A,G,A,A,T,T,T,C,A,T,A}
+
+
+\end{center}
+\end{document}

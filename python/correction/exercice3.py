@@ -19,7 +19,7 @@ def parse_fasta(filename):
             sequences[header] = "".join(seq_lines)
     return sequences
 
-fasta_filename = "./reads.fasta"
+fasta_filename = "../reads.fasta"
 all_sequences = parse_fasta(fasta_filename)
 
 consensus = []
@@ -41,21 +41,16 @@ consensus_1 = consensus[0][1]
 # =====================================
 
 def compare(seq1, seq2):
-    """
-    Compare deux séquences de même longueur et compte le nombre de différences (mismatches).
+    error = 0
+    for i in range(len(seq1)):
+        if seq1[i] != seq2[i]:
+            error +=1
+    return error
 
-    Paramètres :
-    ------------
-    seq1 : str
-        Première séquence à comparer.
-    seq2 : str
-        Seconde séquence à comparer.
-
-    Retourne :
-    ----------
-    int
-        Le nombre de positions où les deux séquences diffèrent.
-"""
+result = compare(consensus_1, gene_1)
+print(result)
+result = compare(consensus_1, gene_2)
+print(result)
 
 
 

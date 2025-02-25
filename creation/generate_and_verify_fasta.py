@@ -70,29 +70,6 @@ def generate_reads_systematic(gene, min_read_length, max_read_length, desired_co
 
     return reads_with_header
 
-def assemble_consensus(gene_length, reads):
-    """
-    Assemble un consensus à partir d'une liste de reads (avec leur position de départ).
-    Pour chaque position du gène, on regroupe toutes les bases couvertes par des reads et on prend
-    la base majoritaire. Si aucune lecture ne couvre la position, on met 'N'.
-    """
-    consensus = []
-    for i in range(gene_length):
-        bases = []
-        for header, read, start in reads:
-            if start <= i < start + len(read):
-                bases.append(read[i - start])
-        if bases:
-            base = max(set(bases), key=bases.count)
-        else:
-            base = 'N'
-        consensus.append(base)
-    return "".join(consensus)
-
-def count_errors(true_seq, consensus_seq):
-    """Compte le nombre de positions où les deux séquences diffèrent."""
-    return sum(1 for a, b in zip(true_seq, consensus_seq) if a != b)
-
 def write_fasta(filename, sequences):
     """Écrit les séquences dans un fichier FASTA.
     :param filename: Nom du fichier de sortie.
@@ -149,8 +126,7 @@ def main():
     parser.add_argument("--max_read_length", type=int, help="Longueur des reads (nt)")
     parser.add_argument("--coverage", type=float, default=5.0, help="Couverture désirée pour niveaux 1 et 2")
     parser.add_argument("--coverage_level3", type=float, default=1.5, help="Couverture désirée pour le niveau 3 (insuffisante pour couvrir entièrement le gène)")
-    parser.add_argument("--error_rate_level2", type=float, default=0.02, help="Taux d'erreur pour le niveau 2 (appliqué dans la première moitié)")
-    parser.add_argument("--error_rate_level3", type=float, default=0.04, help="Taux d'erreur pour le niveau 3")
+    parser.add_argument("--error_rate_level2", type=float, default=0.02, help="Taux d'erreur pour le niveau 2 (appliqué dans une moitié)")
     parser.add_argument("--output", type=str, default="simulated.fasta", help="Nom du fichier FASTA de sortie")
     args = parser.parse_args()
     
@@ -180,36 +156,6 @@ def main():
         print("Couverture complète pour Gene2_N2 (Niveau 2).")
     else:
         print("Couverture incomplète pour Gene2_N2 (Niveau 2).")
-    
-    # --- Niveau 3 : Couverture partielle + Assemblage et comparaison ---
-    gene3 = generate_random_gene(args.gene_length)
-    gene4 = generate_random_gene(args.gene_length)
-    fasta_sequences.append(("Gene3_N3", gene3))
-    fasta_sequences.append(("Gene4_N3", gene4))
-    reads_n3_gene3 = generate_reads_systematic(gene3, args.min_read_length, args.max_read_length, args.coverage_level3, error_rate=args.error_rate_level3)
-    reads_n3_gene4 = generate_reads_systematic(gene4, args.min_read_length, args.max_read_length, args.coverage_level3, error_rate=args.error_rate_level3)
-    for header, read, pos in reads_n3_gene3:
-        fasta_sequences.append((f"{header}_N3", read))
-    for header, read, pos in reads_n3_gene4:
-        fasta_sequences.append((f"{header}_N3", read))
-    print("Niveau 3 généré (reads partiels pour Gene3_N3 et Gene4_N3).")
-    
-    consensus_gene3 = assemble_consensus(args.gene_length, reads_n3_gene3)
-    consensus_gene4 = assemble_consensus(args.gene_length, reads_n3_gene4)
-    fasta_sequences.append(("Consensus_Gene3_N3", consensus_gene3))
-    fasta_sequences.append(("Consensus_Gene4_N3", consensus_gene4))
-    
-    errors_gene3 = count_errors(gene3, consensus_gene3)
-    errors_gene4 = count_errors(gene4, consensus_gene4)
-    print(f"Erreurs dans l'assemblage de Gene3_N3 : {errors_gene3} / {args.gene_length}")
-    print(f"Erreurs dans l'assemblage de Gene4_N3 : {errors_gene4} / {args.gene_length}")
-    
-    if errors_gene3 < errors_gene4:
-        print("Gene3_N3 est le moins erroné.")
-    elif errors_gene4 < errors_gene3:
-        print("Gene4_N3 est le moins erroné.")
-    else:
-        print("Les deux gènes ont le même nombre d'erreurs.")
 
     write_fasta(args.output, fasta_sequences)
     print(f"Fichier FASTA généré : {args.output}")

@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[margin=1cm,landscape]{geometry}
+
+\definecolor{Acolor}{rgb}{1,0.8,0.8} % rouge
+\definecolor{Tcolor}{rgb}{0.8,1,0.8}  % vert
+\definecolor{Ccolor}{rgb}{0.8,0.8,1} % bleu
+\definecolor{Gcolor}{rgb}{1,1,0.8}    % jaune
+
+\newcommand{\dnafont}{\fontsize{50pt}{50pt}\selectfont}
+
+\newcommand{\highlightDNA}[1]{%
+    \foreach \base in {#1} {%
+        \ifnum\pdfstrcmp{\base}{A}=0 \colorbox{Acolor}{A}%
+        \else\ifnum\pdfstrcmp{\base}{T}=0 \colorbox{Tcolor}{T}%
+        \else\ifnum\pdfstrcmp{\base}{C}=0 \colorbox{Ccolor}{C}%
+        \else\ifnum\pdfstrcmp{\base}{G}=0 \colorbox{Gcolor}{G}%
+        \else \textcolor{red}{\base}%
+        \fi\fi\fi\fi
+    }%
+}
+
+\begin{document}
+
+\begin{center}
+    \dnafont
+    \textbf{NIVEAU3 ASSEMBLAGE:}
+    \noindent\highlightDNA{A,G,A,T,T,T,G,C,T,G,A}
+
+    \noindent\highlightDNA{T,T,G,C,T,G,A,C,C,C}
+    \noindent\highlightDNA{T,G,A,C,C,G,G,A,A,C,T,C,A,G,G,A,G,T}
+
+    \noindent\highlightDNA{C,C,A,G,G,A,G,C,T,C}
+    \noindent\highlightDNA{A,A,C,T,C,A,G,G,A,G,C,G}
+    \noindent\highlightDNA{G,G,A,G,C,T,C,A,G,G,A,G,T}
+    \noindent\highlightDNA{T,T,G,C,T,G,A,C,C,G,G,A,A,C,T,C,A,G,G}
+    \noindent\highlightDNA{C,A,G,G,A,G,T,T,C,A,G,G,A,G,T,G,C}
+
+    \textbf{séquence à trouver:}
+    \noindent\highlightDNA{A,G,A,T,T,T,G,C,T,G,A,C,C,G,G,A,A,C,T,C,A,G,G,A,G,T,T,C,A,G,G,A}
+    \noindent\highlightDNA{G,T,G,C}
+
+
+\end{center}
+\end{document}

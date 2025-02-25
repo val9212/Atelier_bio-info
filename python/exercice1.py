@@ -19,7 +19,7 @@ def parse_fasta(filename):
             sequences[header] = "".join(seq_lines)
     return sequences
 
-fasta_filename = "reads.fasta"
+fasta_filename = "./reads.fasta"
 all_sequences = parse_fasta(fasta_filename)
 
 genes = []
@@ -35,25 +35,27 @@ for header, seq in all_sequences.items():
 # CHARGEMENT ET REGROUPEMENT DES GÈNES ET DES LECTURES
 # =====================================
 
+# print(genes)/print(reads) -> [(header, seq), (header,seq)...]
+
 def align(gene_seq, read_seq):
-    for i in range((len(gene_seq)-len(read_seq))+1):
-        if gene_seq[i:i+len(read_seq)] == read_seq:
-            return i
-        else:continue
-    return -1
+    """
+    Recherche l'alignement exact d'une séquence de lecture (read_seq) dans une séquence de référence (gene_seq).
 
-final = []
-for gene, seq_gen in genes:
-    gene_l = []
-    for read, seq_read in reads:
-        aligned = -1
-        aligned = align(seq_gen, seq_read)
-        if aligned != -1:
-            gene_l.append((aligned, aligned+len(seq_read)))
-            print(f"gene: {gene}, read: {read}, pos: ({aligned}, {aligned + len(seq_read)})")
-    final.append(gene_l)
+    Paramètres :
+    ------------
+    gene_seq : str
+        Séquence de référence (gène) dans laquelle on cherche l'alignement.
+    read_seq : str
+        read à rechercher dans la séquence de référence.
 
-print(final)
+    Retourne :
+    ----------
+    int
+        L'indice de départ de la première occurrence de `read_seq` dans `gene_seq`, ou -1 si aucun alignement n'est trouvé.
+    """
+
+
+
 
 
 

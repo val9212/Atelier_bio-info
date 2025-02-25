@@ -19,7 +19,7 @@ def parse_fasta(filename):
             sequences[header] = "".join(seq_lines)
     return sequences
 
-fasta_filename = "niv0.fasta"
+fasta_filename = "./niv0.fasta"
 all_sequences = parse_fasta(fasta_filename)
 
 genes = []
@@ -31,8 +31,7 @@ for header, seq in all_sequences.items():
 # CHARGEMENT ET REGROUPEMENT DES GÈNES ET DES LECTURES
 # =====================================
 
-gene_niv3 = "AGATTTGCTGACCGGAACTCAGGAGTTCAGGAGTGC"
+# print(genes) -> [(header, seq), (header,seq)...]
 
-for header, gene in genes:
-    if gene == gene_niv3:
-        print(f"espece = {header}")
+gene_niv3 = ""
+

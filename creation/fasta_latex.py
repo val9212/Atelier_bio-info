@@ -1,3 +1,6 @@
+import argparse
+
+
 def parse_fasta(filename):
     """Parse un fichier FASTA et retourne un dictionnaire {header: sequence}."""
     sequences = {}
@@ -19,36 +22,16 @@ def parse_fasta(filename):
             sequences[header] = "".join(seq_lines)
     return sequences
 
-fasta_filename = "niv1"
-all_sequences = parse_fasta(fasta_filename)
-
-genes = []
-reads = []
-
-for header, seq in all_sequences.items():
-    if header.startswith("Gene"):
-        genes.append((header, seq))
-    elif header.startswith("Read"):
-        reads.append((header, seq))
-
-def split_read(sequence):
-    """Coupe une séquence en deux parties à peu près égales."""
-    midpoint = len(sequence) // 2
-    return sequence[:midpoint], sequence[midpoint:]
 
 def save_split_genes_to_latex(split_genes, output_filename):
     """
-    Enregistre les ségments d'ADN dans un fichier LaTeX avec coloration des bases.
-
-    Args:
-        split_genes: Liste de tuples (header_part, sequence)
-        output_filename: Nom du fichier de sortie .tex
+    Enregistre les segments d'ADN dans un fichier LaTeX avec coloration des bases.
     """
     latex_content = """\\documentclass{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage{xcolor}
 \\usepackage{tikz}
-\\usepackage[margin=1cm,landscape]{geometry} 
+\\usepackage[margin=1cm,landscape]{geometry}
 
 % Définition des couleurs pour chaque base
 \\definecolor{Acolor}{rgb}{1,0.8,0.8} % rouge clair
@@ -75,27 +58,30 @@ def save_split_genes_to_latex(split_genes, output_filename):
 
 \\begin{center}
     \\dnafont
-    \\textbf{NIVEAU4 ASSEMBLAGE:}
+    \\textbf{ASSEMBLAGE:}
 """
-
-    # Ajouter toutes les séquences formatées
-    for header, seq in split_genes:
+    for seq in split_genes:
         formatted_seq = ",".join(seq)
         latex_content += f"\n    \\noindent\\highlightDNA{{{formatted_seq}}}"
 
-    # Fermer le document
     latex_content += "\n\\end{center}\n\\end{document}"
 
-    # Écrire dans le fichier
     with open(output_filename, 'w') as f:
         f.write(latex_content)
 
 
-# Utilisation avec les gènes splittés
-split_genes = []
-for header, seq in reads:
-    part1, part2 = split_read(seq)
-    split_genes.append((header + "_part1", part1))
-    split_genes.append((header + "_part2", part2))
+def main():
+    parser = argparse.ArgumentParser(
+        description="Convertit un fichier FASTA en un fichier LaTeX avec coloration de séquence.")
+    parser.add_argument("--input", help="Fichier FASTA en entrée")
+    parser.add_argument("--output", help="Fichier LaTeX en sortie")
 
-save_split_genes_to_latex(split_genes, "assemblage4_1.tex")
+    args = parser.parse_args()
+
+    all_sequences = parse_fasta(args.input)
+    reads = [seq for header, seq in all_sequences.items() if header.startswith("Read")]
+    save_split_genes_to_latex(reads, args.output)
+
+
+if __name__ == "__main__":
+    main()

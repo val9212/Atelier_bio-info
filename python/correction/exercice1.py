@@ -19,46 +19,41 @@ def parse_fasta(filename):
             sequences[header] = "".join(seq_lines)
     return sequences
 
-fasta_filename = "./reads.fasta"
+fasta_filename = "../reads.fasta"
 all_sequences = parse_fasta(fasta_filename)
 
-consensus = []
 genes = []
+reads = []
 
 for header, seq in all_sequences.items():
-    if header.startswith("Consensus"):
-        consensus.append((header, seq))
     if header.startswith("Gene"):
         genes.append((header, seq))
-
-gene_1 = genes[-2][1]
-gene_2 = genes[-1][1]
-
-consensus_1 = consensus[0][1]
+    elif header.startswith("Read"):
+        reads.append((header, seq))
 
 # =====================================
 # CHARGEMENT ET REGROUPEMENT DES GÈNES ET DES LECTURES
 # =====================================
 
-def compare(seq1, seq2):
-    """
-    Compare deux séquences de même longueur et compte le nombre de différences (mismatches).
+def align(gene_seq, read_seq):
+    for i in range((len(gene_seq)-len(read_seq))+1):
+        if gene_seq[i:i+len(read_seq)] == read_seq:
+            return i
+        else:continue
+    return -1
 
-    Paramètres :
-    ------------
-    seq1 : str
-        Première séquence à comparer.
-    seq2 : str
-        Seconde séquence à comparer.
+final = []
+for gene, seq_gen in genes:
+    gene_l = []
+    for read, seq_read in reads:
+        aligned = -1
+        aligned = align(seq_gen, seq_read)
+        if aligned != -1:
+            gene_l.append((aligned, aligned+len(seq_read)))
+            print(f"gene: {gene}, read: {read}, pos: ({aligned}, {aligned + len(seq_read)})")
+    final.append(gene_l)
 
-    Retourne :
-    ----------
-    int
-        Le nombre de positions où les deux séquences diffèrent.
-"""
-
-
-
+print(final)
 
 
 
