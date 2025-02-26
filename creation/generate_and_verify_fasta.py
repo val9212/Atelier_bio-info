@@ -1,4 +1,6 @@
-import random, math, argparse
+import random
+import math
+import argparse
 
 def generate_random_gene(length):
     """Génère une séquence d'ADN aléatoire de la longueur spécifiée."""
@@ -117,19 +119,16 @@ def verify_coverage(gene, reads, max_allowed_mismatches=1):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Génère un fichier FASTA simulé avec 3 niveaux de complexité. "
-                    "Pour le niveau 3, on simule une couverture partielle (pas suffisante pour couvrir le gène uniquement avec des moitiés de reads), "
-                    "on assemble les reads disponibles pour obtenir un consensus et on compare le nombre d'erreurs entre deux gènes."
+        description="Génère un fichier FASTA simulé avec 2 niveaux de complexité."
     )
     parser.add_argument("--gene_length", type=int, default=300, help="Longueur des gènes (nt)")
     parser.add_argument("--min_read_length", type=int, help="Longueur des reads (nt)")
     parser.add_argument("--max_read_length", type=int, help="Longueur des reads (nt)")
-    parser.add_argument("--coverage", type=float, default=5.0, help="Couverture désirée pour niveaux 1 et 2")
-    parser.add_argument("--coverage_level3", type=float, default=1.5, help="Couverture désirée pour le niveau 3 (insuffisante pour couvrir entièrement le gène)")
-    parser.add_argument("--error_rate_level2", type=float, default=0.02, help="Taux d'erreur pour le niveau 2 (appliqué dans une moitié)")
-    parser.add_argument("--output", type=str, default="simulated.fasta", help="Nom du fichier FASTA de sortie")
+    parser.add_argument("--coverage", type=float, help="Couverture désirée pour niveaux 1 et 2")
+    parser.add_argument("--error_rate_level2", type=float, help="Taux d'erreur pour le niveau 2")
+    parser.add_argument("--output", type=str, help="Nom du fichier FASTA de sortie")
     args = parser.parse_args()
-    
+
     fasta_sequences = []
 
     # --- Niveau 1 : Reads parfaits (sans erreur) ---

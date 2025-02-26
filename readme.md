@@ -1,3 +1,5 @@
+# Documents Atelier Bio-informatique
+
 ```
 │   carnet.pdf
 │   diapo.pdf
@@ -42,4 +44,33 @@
 
 ```
 
-fasta_latex exemple de commande py .\creation\fasta_latex.py --input .\creation\niv1.txt --output .\creation\test.tex
+## Utilisation des script create
+
+### fasta_latex.py
+
+Script capable de transformer les "Read" d'un fichier fasta en sequence LaTeX
+
+- Argument
+    
+    - --input : Fichier FASTA en entrée
+    - --output : Fichier LaTeX en sortie
+
+
+- Exemple d'utilisation
+> `py .\creation\fasta_latex.py --input .\creation\niv1.txt --output .\creation\test.tex`
+
+### generate_and_verify_fasta.py
+
+Script capable à partir de différents paramètres de créer des gènes et des reads associées. Le programme vérifie ensuite que les reads couvrent bien la totalité des gènes.
+
+- Argument 
+  - --gene_length : Longueur des gènes (nt)
+  - --min_read_length : Longueur des reads (nt)
+  - --max_read_length : Longueur des reads (nt)
+  - --coverage : Couverture désirée pour niveaux 1 et 2
+  - --error_rate_level2 : Taux d'erreur pour le niveau 2 
+  - --output : Nom du fichier FASTA de sortie
+
+
+- Exemple d'utilisation
+>`py .\creation\generate_and_verify_fasta.py --gene_length 150 --min_read_length 10 --max_read_length 20 --coverage 5.0 --error_rate_level2 0.02 --output .\creation\test.fasta`
