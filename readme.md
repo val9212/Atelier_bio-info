@@ -26,12 +26,14 @@
 │           niveau4-corrigé.png
 │
 ├───create
+│       carnet_pfe                       #Fichier word du carnet. 
 │       fasta_latex.py                   #Script permettant de convertir des reads au format Fasta en LaTeX.
 │       generate_and_verify_fasta.py     #Script python capable de generer un jeu de données. 
 │       Mystere_du_medicament_perdu.pptx #Fichier Powerpoint du diaporama.
 │       niv1                             #Reads et gènes de l'exercice1 uniquement.    
 │       niv2                             #Reads et gènes de l'exercice2 uniquement. 
 │       niv3                             #Consensus et gènes de l'exercice3. 
+│       reads.fasta                      #Test de jeu de données.
 │
 ├───python
 │   │   exercice0.py                    #Script exercice0.
