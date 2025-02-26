@@ -12,13 +12,26 @@
 │       assemblage4_1.tex               #Assemblage niveau4 partie1.
 │       assemblage4_2.tex               #Assemblage niveau4 partie1.
 │
+├───automates
+│   │   légende.png                    #Légende des automates.
+│   │   niveau1.png                    #Automate niveau 1.
+│   │   niveau2.png                    #Automate niveau 2.
+│   │   niveau3.png                    #Automate niveau 3.
+│   │   niveau4.png                    #Automate niveau 4.
+│   │
+│   └───correction                     #Correction des automates
+│           niveau1-corrigé.png
+│           niveau2-corrigé.png
+│           niveau3-corrigé.png
+│           niveau4-corrigé.png
+│
 ├───create
-│       diapo.pptx                      #Fichier Powerpoint du diaporama.
-│       fasta_latex.py                  #Script permettant de convertir des reads au format Fasta en LaTeX.
-│       generate_and_verify_fasta.py    #Script python capable de generer un jeu de données. 
-│       niv1                            #Reads et gènes de l'exercice1 uniquement.    
-│       niv2                            #Reads et gènes de l'exercice2 uniquement. 
-│       niv3                            #Consensus et gènes de l'exercice3. 
+│       fasta_latex.py                   #Script permettant de convertir des reads au format Fasta en LaTeX.
+│       generate_and_verify_fasta.py     #Script python capable de generer un jeu de données. 
+│       Mystere_du_medicament_perdu.pptx #Fichier Powerpoint du diaporama.
+│       niv1                             #Reads et gènes de l'exercice1 uniquement.    
+│       niv2                             #Reads et gènes de l'exercice2 uniquement. 
+│       niv3                             #Consensus et gènes de l'exercice3. 
 │
 ├───python
 │   │   exercice0.py                    #Script exercice0.
@@ -43,6 +56,14 @@
         readme.md                       #Enoncé des exercices Scratch.
 
 ```
+
+## Liens
+
+- Carnet
+> `https://docs.google.com/document/d/1HITE3KPE_eUss2RUHZ9Ar2EJ5bEXz_Apae5CAiFWETE/edit?usp=sharing`
+
+- Diaporama
+> `https://docs.google.com/presentation/d/17Axj2qatgtzGglY-XbqR1_Z82SHLJNwp2kpv3NbDUvY/edit?usp=sharing`
 
 ## Utilisation des script create
 
