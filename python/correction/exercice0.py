@@ -35,4 +35,4 @@ gene_niv3 = "AGATTTGCTGACCGGAACTCAGGAGTTCAGGAGTGC"
 
 for header, gene in genes:
     if gene == gene_niv3:
-        print(f"espece = {header}")
+        print(f"espèce = {header}")

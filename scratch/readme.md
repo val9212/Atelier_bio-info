@@ -12,4 +12,4 @@
 
 À partir du jeu de données composé des séquences du niveau 4 de l'assemblage et du pseudocode, utiliser le programme capable d'aligner des moitiés de reads sur des séquences de gènes sans erreur. Le programme retourne la position des moitiés de reads.
 
-> Vous pouvez reprendre le programme realiser lors de l'exercice 1
+> Vous pouvez reprendre le programme réalisé lors de l'exercice 1.

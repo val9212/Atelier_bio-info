@@ -62,16 +62,16 @@ for gene, seq_gen in genes:
         aligned = align(seq_gen, seq_read)
         if aligned != -1:
             gene_l.append((aligned, aligned+len(seq_read)))
-            print(f"gene: {gene}, read: {read}, pos: ({aligned}, {aligned+len(seq_read)})")
+            print(f"gène: {gene}, read: {read}, pos: ({aligned}, {aligned+len(seq_read)})")
         else:
             first, aligned = align_half(seq_gen, seq_read)
             if aligned != -1:
                 if first :
                     gene_l.append((aligned, aligned + len(seq_read)))
-                    print(f"gene: {gene}, read: {read}, pos: ({aligned}, {aligned + len(seq_read)})")
+                    print(f"gène: {gene}, read: {read}, pos: ({aligned}, {aligned + len(seq_read)})")
                 else:
                     gene_l.append((aligned-len(seq_read)//2, aligned - len(seq_read)//2 + len(seq_read)))
-                    print(f"gene: {gene}, read: {read}, pos: ({aligned - len(seq_read)//2}, {aligned - len(seq_read)//2 + len(seq_read)})")
+                    print(f"gène: {gene}, read: {read}, pos: ({aligned - len(seq_read)//2}, {aligned - len(seq_read)//2 + len(seq_read)})")
     final.append(gene_l)
 
 print(final)

@@ -50,7 +50,7 @@ for gene, seq_gen in genes:
         aligned = align(seq_gen, seq_read)
         if aligned != -1:
             gene_l.append((aligned, aligned+len(seq_read)))
-            print(f"gene: {gene}, read: {read}, pos: ({aligned}, {aligned + len(seq_read)})")
+            print(f"gène: {gene}, read: {read}, pos: ({aligned}, {aligned + len(seq_read)})")
     final.append(gene_l)
 
 print(final)

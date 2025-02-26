@@ -28,7 +28,7 @@
 ├───create
 │       carnet_pfe                       #Fichier word du carnet. 
 │       fasta_latex.py                   #Script permettant de convertir des reads au format Fasta en LaTeX.
-│       generate_and_verify_fasta.py     #Script python capable de generer un jeu de données. 
+│       generate_and_verify_fasta.py     #Script python capable de générer un jeu de données. 
 │       Mystere_du_medicament_perdu.pptx #Fichier Powerpoint du diaporama.
 │       niv1                             #Reads et gènes de l'exercice1 uniquement.    
 │       niv2                             #Reads et gènes de l'exercice2 uniquement. 
@@ -59,7 +59,7 @@
 
 ```
 
-## Liens
+## Liens :
 
 - Carnet
 > https://docs.google.com/document/d/1HITE3KPE_eUss2RUHZ9Ar2EJ5bEXz_Apae5CAiFWETE/edit?usp=sharing
@@ -67,11 +67,11 @@
 - Diaporama
 > https://docs.google.com/presentation/d/17Axj2qatgtzGglY-XbqR1_Z82SHLJNwp2kpv3NbDUvY/edit?usp=sharing
 
-## Utilisation des script create
+## Utilisation des scripts create :
 
 ### fasta_latex.py
 
-Script capable de transformer les "Read" d'un fichier fasta en sequence LaTeX
+Script capable de transformer les "Read" d'un fichier fasta en séquence LaTeX
 
 - Argument
     
