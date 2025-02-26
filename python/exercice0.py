@@ -33,5 +33,5 @@ for header, seq in all_sequences.items():
 
 # print(genes) -> [(header, seq), (header,seq)...]
 
-gene_niv3 = ""
+gene_niv3 = "" # <- votre séquence
 

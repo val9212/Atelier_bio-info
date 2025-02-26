@@ -10,7 +10,7 @@
 │       assemblage4_1.tex               #Assemblage niveau4 partie1.
 │       assemblage4_2.tex               #Assemblage niveau4 partie1.
 │
-├───creation
+├───create
 │       diapo.pptx                      #Fichier Powerpoint du diaporama.
 │       fasta_latex.py                  #Script permettant de convertir des reads au format Fasta en LaTeX.
 │       generate_and_verify_fasta.py    #Script python capable de generer un jeu de données. 
@@ -34,10 +34,11 @@
 │           exercice3.py
 │
 └───scratch
-        Alignement_n1.sb3
-        Alignement_n2.sb3
+        exercice0.sb3
+        exercice1.sb3
+        exercice2.sb3
+        jd_scratch.fasta
         readme.md                       #Enoncé des exercices Scratch.
-        Sequences.sb3
 
 ```
 
