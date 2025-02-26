@@ -62,10 +62,10 @@
 ## Liens
 
 - Carnet
-> `https://docs.google.com/document/d/1HITE3KPE_eUss2RUHZ9Ar2EJ5bEXz_Apae5CAiFWETE/edit?usp=sharing`
+> https://docs.google.com/document/d/1HITE3KPE_eUss2RUHZ9Ar2EJ5bEXz_Apae5CAiFWETE/edit?usp=sharing
 
 - Diaporama
-> `https://docs.google.com/presentation/d/17Axj2qatgtzGglY-XbqR1_Z82SHLJNwp2kpv3NbDUvY/edit?usp=sharing`
+> https://docs.google.com/presentation/d/17Axj2qatgtzGglY-XbqR1_Z82SHLJNwp2kpv3NbDUvY/edit?usp=sharing
 
 ## Utilisation des script create
 
